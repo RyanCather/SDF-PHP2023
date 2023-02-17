@@ -27,13 +27,14 @@
 
 
 <?php
-if (isset($_POST['formSubmit'])) {
+//if (isset($_POST['formSubmit'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userEmail = sanitiseData($_POST['contactEmail']);
     $userMessage = sanitiseData($_POST['contactMessage']);
 
-    echo $userEmail;
-    echo "<p>";
-    echo $userMessage;
+    $csvFile = fopen("contact.csv", "a");
+    fwrite($csvFile, $userEmail.",".$userMessage."\n");
+    fclose($csvFile);
 }
 
 ?>
