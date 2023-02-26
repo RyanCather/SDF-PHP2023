@@ -1,7 +1,6 @@
 <?php include "template.php" ?>
 <title>Contact Us</title>
 <body>
-<h1>Contact Us</h1>
 <div class="container-fluid">
     <h1 class="text-primary">Please Send us a Message</h1>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
