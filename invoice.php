@@ -1,4 +1,7 @@
-<?php include "template.php" ?>
+<?php include "template.php"
+/** @var $productNames */
+/** @var $productPrices */
+?>
 <title>Invoice</title>
 <body>
 
@@ -29,18 +32,11 @@ if (($handle = fopen("orders.csv", "r")) !== FALSE) {
     }
     fclose($handle);    // Closes the File
 
-
-    $prod1ItemCost = 3.4;
-    $prod2ItemCost = 5.0;
-    $prod3ItemCost = 12.54;
-    $prod4ItemCost = 19.77;
-    $prod5ItemCost = 1.01;
-
-    $prod1SubTotal = $prod1Quantity * $prod1ItemCost;
-    $prod2SubTotal = $prod2Quantity * $prod2ItemCost;
-    $prod3SubTotal = $prod3Quantity * $prod3ItemCost;
-    $prod4SubTotal = $prod4Quantity * $prod4ItemCost;
-    $prod5SubTotal = $prod5Quantity * $prod5ItemCost;
+    $prod1SubTotal = $prod1Quantity * $productPrices["product1"];
+    $prod2SubTotal = $prod2Quantity * $productPrices["product2"];
+    $prod3SubTotal = $prod3Quantity * $productPrices["product3"];
+    $prod4SubTotal = $prod4Quantity * $productPrices["product4"];
+    $prod5SubTotal = $prod5Quantity * $productPrices["product5"];
     $invoiceTotal = $prod1SubTotal + $prod2SubTotal + $prod3SubTotal + $prod4SubTotal + $prod5SubTotal;
 }
 
@@ -93,32 +89,32 @@ if (($handle = fopen("orders.csv", "r")) !== FALSE) {
     </div>
 
     <div class="row">
-        <div class="col-lg-3">Product 1</div>
-        <div class="col-lg-3">$<?= $prod1ItemCost ?></div>
+        <div class="col-lg-3"><?php echo $productNames["product1"]; ?> </div>
+        <div class="col-lg-3">$<?= $productPrices["product1"]; ?></div>
         <div class="col-lg-3"><?= $prod1Quantity ?></div>
         <div class="col-lg-3">$<?= $prod1SubTotal ?></div>
     </div>
     <div class="row">
-        <div class="col-lg-3">Product 2</div>
-        <div class="col-lg-3">$<?= $prod2ItemCost ?></div>
+        <div class="col-lg-3"><?php echo $productNames["product2"]; ?> </div>
+        <div class="col-lg-3">$<?= $productPrices["product2"]; ?></div>
         <div class="col-lg-3"><?= $prod2Quantity ?></div>
         <div class="col-lg-3">$<?= $prod2SubTotal ?></div>
     </div>
     <div class="row">
-        <div class="col-lg-3">Product 3</div>
-        <div class="col-lg-3">$<?= $prod3ItemCost ?></div>
+        <div class="col-lg-3"><?php echo $productNames["product3"]; ?> </div>
+        <div class="col-lg-3">$<?= $productPrices["product3"]; ?></div>
         <div class="col-lg-3"><?= $prod3Quantity ?></div>
         <div class="col-lg-3">$<?= $prod3SubTotal ?></div>
     </div>
     <div class="row">
-        <div class="col-lg-3">Product 4</div>
-        <div class="col-lg-3">$<?= $prod4ItemCost ?></div>
+        <div class="col-lg-3"><?php echo $productNames["product4"]; ?> </div>
+        <div class="col-lg-3">$<?= $productPrices["product4"]; ?></div>
         <div class="col-lg-3"><?= $prod4Quantity ?></div>
         <div class="col-lg-3">$<?= $prod4SubTotal ?></div>
     </div>
     <div class="row">
-        <div class="col-lg-3">Product 5</div>
-        <div class="col-lg-3">$<?= $prod5ItemCost ?></div>
+        <div class="col-lg-3"><?php echo $productNames["product5"]; ?> </div>
+        <div class="col-lg-3">$<?= $productPrices["product5"]; ?></div>
         <div class="col-lg-3"><?= $prod5Quantity ?></div>
         <div class="col-lg-3">$<?= $prod5SubTotal ?></div>
     </div>
