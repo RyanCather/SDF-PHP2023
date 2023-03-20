@@ -24,9 +24,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userEmail = sanitiseData($_POST['contactEmail']);
     $userMessage = sanitiseData($_POST['contactMessage']);
 
-    $csvFile = fopen("contact.csv", "a");
-    fwrite($csvFile, $userEmail.",".$userMessage."\n");
-    fclose($csvFile);
+    $sqlStmt = $conn->prepare("INSERT INTO Contact (ContactEmail, Message) VALUES (:ContactEmail, :Message)");
+
+
+//    $csvFile = fopen("contact.csv", "a");
+//    fwrite($csvFile, $userEmail.",".$userMessage."\n");
+//    fclose($csvFile);
 }
 
 ?>
