@@ -1,4 +1,8 @@
-<?php include "template.php" ?>
+<?php include "template.php";
+/** @var $conn */
+?>
+
+
 <title>Contact Us</title>
 <body>
 <div class="container-fluid">
@@ -25,6 +29,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userMessage = sanitiseData($_POST['contactMessage']);
 
     $sqlStmt = $conn->prepare("INSERT INTO Contact (ContactEmail, Message) VALUES (:ContactEmail, :Message)");
+    $sqlStmt->bindParam(':ContactEmail', $userEmail);
+    $sqlStmt->bindParam(':Message', $userMessage);
+    $sqlStmt->execute();
+
+
+
+
 
 
 //    $csvFile = fopen("contact.csv", "a");
