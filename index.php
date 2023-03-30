@@ -6,10 +6,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6">
-            <p>username: admin</p>
+            <p>username: ryan.cather@ed.act.edu.au</p>
+            <p>Password: password</p>
+            <p>username: admin@admin.com</p>
             <p>Password: admin</p>
-            <p>username: user</p>
-            <p>Password: user</p>
         </div>
         <div class="col-md-6">
             <!--            Login Form-->
@@ -24,11 +24,9 @@
                         <input type="password" name="password" class="form-control" required="required"/>
                     </div>
 
-                    <center>
-                        <button name="login" class="btn btn-primary"><span
-                                    class="glyphicon glyphicon-log-in"></span> Login
-                        </button>
-                    </center>
+                    <div class="text-center">
+                        <button name="login" class="btn btn-primary">Login</button>
+                    </div>
                 </form>
             <?php endif; ?>
 
@@ -36,10 +34,6 @@
     </div>
 </div>
 
-<?php
-echo "First Name: ". $_SESSION["FirstName"] ."<br>";
-echo "Email Address:" .$_SESSION["EmailAddress"]."<br>";
-?>
 
 <?php echo footer(); ?>
 </body>
