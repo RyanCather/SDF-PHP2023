@@ -23,20 +23,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contact.php">Contact Us</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="orderForm.php">Order Form</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="invoiceList.php">Invoice List</a>
-                </li>
+
                 <?php
                 if (!isset($_SESSION["FirstName"])) {
                     echo '<li class="nav-item">
                   <a class="nav-link" href="register.php">Register</a>
                 </li>';
+                } else {
+                    echo '<li class="nav-item" ><a class="nav-link" href = "orderForm.php"> Order Form </a ></li >';
+                    echo '<li class="nav-item" ><a class="nav-link" href = "invoiceList.php"> Invoice list</a ></li >';
                 }
                 ?>
-
             </ul>
         </div>
         <?php
