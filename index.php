@@ -2,17 +2,16 @@
 <?php include 'login.php'; ?>
 <title>PHP Template</title>
 <body>
-<h1>Heading</h1>
+<h1>Star Wars Shopfront</h1>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-6">
             <p>username: ryan.cather@ed.act.edu.au</p>
             <p>Password: password</p>
             <p>username: admin@admin.com</p>
             <p>Password: admin</p>
         </div>
-        <div class="col-md-6">
-            <!--            Login Form-->
+        <div class="col-6">
             <?php if (!isset($_SESSION["EmailAddress"])) : ?>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                     <div class="form-group">
@@ -29,7 +28,6 @@
                     </div>
                 </form>
             <?php endif; ?>
-
         </div>
     </div>
 </div>
@@ -39,3 +37,15 @@
 </body>
 <script src="js/bootstrap.bundle.min.js"></script>
 </html>
+
+
+<!--
+ <div class="col-md-6">
+
+        </div>
+        <div class="col-md-6">
+            <?php if (!isset($_SESSION["FirstName"])) : ?>
+
+            <?php endif; ?>
+
+-->
