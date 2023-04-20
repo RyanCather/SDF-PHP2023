@@ -129,14 +129,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </body>
 </html>
-
-
-<?php
-$query = $conn->query("SELECT DISTINCT category FROM Products");
-?>
-
-
-<!--
-
-                        </select>
-                        -->
