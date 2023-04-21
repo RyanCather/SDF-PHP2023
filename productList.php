@@ -33,6 +33,10 @@ if ($_SESSION['AccessLevel'] == 1) {
                     <!-- edit button-->
                     <a href="productEdit.php?prodCode=<?php echo $productData[2]; ?>">Edit</a>
                 </div>
+                <div class="col-md-2">
+                    <!-- remove button-->
+                    <a href="productRemove.php?prodCode=<?php echo $productData[2]; ?>">Remove</a>
+                </div>
             </div>
             <?php
         }
