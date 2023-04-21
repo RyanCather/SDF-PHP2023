@@ -23,14 +23,14 @@ if ($_SESSION['AccessLevel'] == 1) {
                     <h2>Products Details</h2>
                     <p>Product Name<input type="text" name="prodName" class="form-control" required="required"></p>
                     <p>Product Category
-                        <!-- <input type="text" name="prodCategory" class="form-control" required="required">-->
-                        <select name="prodCategory">
-                            <?php
-                            while ($row = $query->fetchArray()) {
-                                echo '<option>' . $row[0] . '</option>';
-                            }
-                            ?>
-                        </select>
+                         <input type="text" name="prodCategory" class="form-control" required="required">
+<!--                        <select name="prodCategory">-->
+<!--                            --><?php
+//                            while ($row = $query->fetchArray()) {
+//                                echo '<option>' . $row[0] . '</option>';
+//                            }
+//                            ?>
+<!--                        </select>-->
                     </p>
                     <p>Quantity<input type="number" name="prodQuantity" class="form-control" required="required"></p>
                 </div>
