@@ -24,6 +24,19 @@ Products will have:
 
 # Behaviour User Journey
 
+```mermaid
+journey
+title Login / Log off
+    section Login
+        Load main (home) page: 5: Unauthenticated User
+        Enter login details: 5: Unauthenticated User
+        Press Login Button: 5: Unauthenticated User
+    section Registered
+        Perform site Actions:5: Authenticated User
+    section Logoff
+        Press Logoff Button in Navbar:5: Authenticated User
+        Close Browser:5: Unauthenticated User
+```
 
 
 # Planning Diagram - Wireframes
