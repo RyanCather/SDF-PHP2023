@@ -7,3 +7,5 @@
 .idea/php.xml
 .idea/SDF-PHP2023.iml
 .idea/vcs.xml
+/.idea/dataSources.xml
+/.idea/sqldialects.xml
