@@ -41,4 +41,6 @@ title Login / Log off
 
 # Planning Diagram - Wireframes
 
+![Main page wireframe](images/wireframes/main.png)
+
 
