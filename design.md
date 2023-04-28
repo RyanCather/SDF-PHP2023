@@ -38,6 +38,17 @@ title Login / Log off
         Close Browser:5: Unauthenticated User
 ```
 
+```mermaid
+journey
+title Contact Us
+    section Contact Us
+        Load Contact Us page: 5: Any User
+        Enter email address : 5: Any User
+        Enter message : 5: Any User
+        Press Submit Button: 5: Any User
+    
+```
+
 
 # Planning Diagram - Wireframes
 
