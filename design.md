@@ -48,6 +48,13 @@ title Contact Us
         Press Submit Button: 5: Any User
     
 ```
+Other behaviours to document
+
+- Invoice
+- Ordering
+- Admin Product Add
+- Admin Product Edit
+- Admin Product Remove
 
 
 # Planning Diagram - Wireframes
