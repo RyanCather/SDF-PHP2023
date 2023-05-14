@@ -54,30 +54,29 @@ if (isset($_POST['action']) && $_POST['action'] == "change") {
     if (isset($_SESSION["ShoppingCart"])) {
     $total_price = 0;
     ?>
-    <table class="table">
-        <tbody>
-        <tr>
-            <td></td>
-            <td>ITEM NAME</td>
-            <td>QUANTITY</td>
-            <td>UNIT PRICE</td>
-            <td>ITEMS TOTAL</td>
-        </tr>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-2">ITEM NAME</div>
+            <div class="col-2">QUANTITY</div>
+            <div class="col-2">UNIT PRICE</div>
+            <div class="col-2">ITEMS TOTAL</div>
+        </div>
         <?php
         foreach ($_SESSION["ShoppingCart"] as $product) {
             ?>
-            <tr>
-                <td>
+            <div class="row">
+                <div class="col-2">
                     <img src='images/productImages/<?php echo $product["image"]; ?>' width="50" height="40"/>
-                </td>
-                <td><?php echo $product["productName"]; ?> <br>
+                </div>
+                <div class="col-2"><?php echo $product["productName"]; ?> <br>
                     <form method='post' action=''>
                     <input type='hidden' name='code' value="<?php echo $product["code"]; ?>"/>
                     <input type='hidden' name='action' value="remove"/>
                     <button type='submit' class='remove'>Remove Item</button>
                     </form>
-                </td>
-                <td>
+                </div>
+                <div class="col-2">
                     <form method='post' action=''>
                         <input type='hidden' name='code' value="<?php echo $product["code"]; ?>"/>
                         <input type='hidden' name='action' value="change"/>
@@ -99,28 +98,26 @@ if (isset($_POST['action']) && $_POST['action'] == "change") {
                             </option>
                         </select>
                     </form>
-                </td>
-                <td>
+                </div>
+                <div class="col-2">
                     <!--Individual product price-->
                     <?php echo "$" . $product["price"]; ?>
-                </td>
-                <td>
+                </div>
+                <div class="col-2">
                     <!-- Subtotal for product-->
                     <?php echo "$" . $product["price"] * $product["quantity"]; ?>
-                </td>
-            </tr>
+                </div>
+            </div>
             <?php
             $total_price += ($product["price"] * $product["quantity"]);
         }
         ?>
-        <tr>
-        <td colspan="5" align="right">
-        <strong>TOTAL: <?php echo "$". $total_price; ?></strong>
-
-</td>
-</tr>
-        </tbody>
-    </table>
+        <div class="row">
+        <div class="col-12" align="right">
+        <div class="badge bg-primary text-wrap fs-5">TOTAL: <?php echo "$". $total_price; ?></div>
+</div>
+</div>
+    </div>
 <form method="post">
             <input type="submit" name="orderProducts" value="Order Now"/>
         </form>
