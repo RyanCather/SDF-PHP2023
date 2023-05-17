@@ -16,10 +16,19 @@ if (!isset($_SESSION["CustomerID"])) {
     header("Location:index.php");
 } else {
     if (empty($_GET["order"])) {
-        // Case 2 - no 'order' variable detected in the url.
+        // no 'order' variable detected in the url.
         $custID = $_SESSION['CustomerID'];
-        $query = $conn->query("SELECT OrderNumber FROM Orders WHERE CustomerID='$custID' AND Status='OPEN'");
-        $count = $conn->querySingle("SELECT OrderNumber FROM Orders WHERE customerID='$custID' AND status='OPEN'");
+
+        if ($_SESSION["AccessLevel"] == 2) {
+            // Case 5 - Generate a list of all invoices for administrators
+            $query = $conn->query("SELECT OrderNumber FROM Orders");
+            $count = $conn->querySingle("SELECT OrderNumber FROM Orders");
+        } else {
+            // Case 2 - Generate a list of open invoices for user
+            $query = $conn->query("SELECT OrderNumber FROM Orders WHERE CustomerID='$custID' AND Status='OPEN'");
+            $count = $conn->querySingle("SELECT OrderNumber FROM Orders WHERE customerID='$custID' AND status='OPEN'");
+        }
+
         $orderCodesForUser = [];
 
         if ($count > 0) {  // Has the User made orders previously?
@@ -47,11 +56,48 @@ if (!isset($_SESSION["CustomerID"])) {
         }
     } else {
         // Case 3 - 'order' variable detected.
+        $orderNumber = $_GET["order"];
+        $query = $conn->query("SELECT p.ProductName, p.Price, o.Quantity, p.Price*o.Quantity as SubTotal, o.OrderDate, o.Status FROM Orders o INNER JOIN Products p on o.ProductID = p.ProductID WHERE o.OrderNumber='$orderNumber'");
+        $total = 0;
+        ?>
+        <div class='container-fluid'>
+        <div class='row'>
+            <div class='col text-success display-6'>Product Name</div>
+            <div class='col text-success display-6'>Price</div>
+            <div class='col text-success display-6'>Quantity</div>
+            <div class='col text-success display-6'>Subtotal</div>
+        </div>
+
+        <?php
+        while ($data = $query->fetchArray()) {
+            echo "<div class='row'>";
+            $productName = $data["ProductName"];
+            $price = $data["Price"];
+            $quantity = $data["Quantity"];
+            $subtotal = $data["SubTotal"];
+            $orderDate = $data["OrderDate"];
+            $status = $data["Status"];
+            $total = $total + $subtotal; // Running Total
+            echo "<div class='col'>" . $productName . "</div>";
+            echo "<div class='col'>$" . $price . "</div>";
+            echo "<div class='col'>" . $quantity . "</div>";
+            echo "<div class='col'>$" . $subtotal . "</div>";
+
+            echo "</div>";
+        }
+        ?>
+
+        <div class='row'>
+            <div class='col'></div>
+            <div class='col'></div>
+            <div class='col display-6'>Total : $<?= $total ?></div>
+        </div>
+        <div class='row'>
+            <div class='col'></div>
+            <div class='col'></div>
+            <div class='col'><?= $orderDate ?></div>
+        </div>
+
+        <?php
     }
 }
-
-
-/*
- *
-
- */
