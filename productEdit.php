@@ -9,7 +9,7 @@ if (isset($_GET["prodCode"])) {
     $prodCode = $_GET["prodCode"];
     $queryCategories = $conn->query("SELECT DISTINCT category FROM Products");
 } else {
-    header("location:index.php");
+    header("location:productList.php");
 }
 
 $query = $conn->query("SELECT * FROM products WHERE code='$prodCode'");
