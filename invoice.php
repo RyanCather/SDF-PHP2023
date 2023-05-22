@@ -19,7 +19,7 @@ if (!isset($_SESSION["CustomerID"])) {
         // no 'order' variable detected in the url.
         $custID = $_SESSION['CustomerID'];
 
-        if ($_SESSION["AccessLevel"] == 2) {
+        if ($_SESSION["AccessLevel"] == 1) {
             // Case 5 - Generate a list of all invoices for administrators
             $query = $conn->query("SELECT OrderNumber FROM Orders");
             $count = $conn->querySingle("SELECT OrderNumber FROM Orders");
@@ -99,5 +99,36 @@ if (!isset($_SESSION["CustomerID"])) {
         </div>
 
         <?php
+        if ($_SESSION["AccessLevel"] == 1) {
+            if (!empty($_GET["status"])) {
+                if ($_GET["status"] == "CLOSED") {
+                    $conn->exec("UPDATE Orders SET status='CLOSED' WHERE OrderNumber='$orderNumber'");
+                    $orderMessage = "Order #:" . $orderNumber . " has been closed";
+                } else {
+                    $conn->exec("UPDATE Orders SET status='OPEN' WHERE OrderNumber='$orderNumber'");
+                    $orderMessage = "Order #:" . $orderNumber . " has been re-opened";
+                }
+            }
+            if ($status == "OPEN") {
+                echo "STATUS: OPEN";
+                echo "<p><a href='invoice.php?order=" . $orderNumber . "&status=CLOSED'>Click here to close</a></p>";
+            } else {
+                echo "STATUS: CLOSED";
+                echo "<p><a href='invoice.php?order=" . $orderNumber . "&status=OPEN'>Click here to open</a></p>";
+            }
+        }
+
+
     }
 }
+
+
+/*
+ *
+ *
+ *
+
+
+
+
+ */
