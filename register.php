@@ -61,6 +61,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {   // Will return true when the user 
         $sqlStmt->bindParam(':Address', $address);
         $sqlStmt->bindParam(':PhoneNumber', $phoneNumber);
         $sqlStmt->execute();
+        $_SESSION["flash_message"] = "<div class='bg-success'>User Registration successful.</div>";
+
 
     }
 }

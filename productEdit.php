@@ -117,16 +117,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->bindValue(':newProdImage', $fileNameNew);
                 $stmt->bindValue(':newProdCode', $newCode);
                 $stmt->execute();
+                                    $_SESSION["flash_message"] = "<div class='bg-success'>Product Editted.</div>";
+
                 header("location:productList.php");
             } else {
-                echo "Your image is too big!";
+                    $_SESSION["flash_message"] = "<div class='bg-danger'>The image file size it too large.</div>";
+                }
+            } else {
+                $_SESSION["flash_message"] = "<div class='bg-danger'>There was an issue uploading the image.</div>";
             }
         } else {
-            echo "there was an error uploading your image!";
+            $_SESSION["flash_message"] = "<div class='bg-danger'>This file type is not supported. Only JPGs, PNGs or PDFs are allowed.</div>";
         }
-    } else {
-        echo "You cannot upload files of this type!";
-    }
 }
 
 ?>

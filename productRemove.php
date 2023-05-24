@@ -15,12 +15,14 @@ if ($_SESSION['AccessLevel'] == 1) {
         $query = "DELETE FROM products WHERE code='$productToDelete'";
         $sqlstmt = $conn->prepare($query);
         $sqlstmt->execute();
-        echo "<p>Product " . $productToDelete . " has been deleted from the database";
+        $_SESSION["flash_message"] = "<div class='bg-success'>Product ".$productToDelete. " deleted from the system.</div>";
     } else {
-        echo "No product code found.";
+        $_SESSION["flash_message"] = "<div class='bg-success'>No product Code Found</div>";
+
     }
 
 } else {
+    $_SESSION["flash_message"] = "<div class='bg-success'>Product Added</div>";
     header("location:index.php");
 }
 ?>

@@ -23,14 +23,14 @@ if ($_SESSION['AccessLevel'] == 1) {
                     <h2>Products Details</h2>
                     <p>Product Name<input type="text" name="prodName" class="form-control" required="required"></p>
                     <p>Product Category
-                         <input type="text" name="prodCategory" class="form-control" required="required">
-<!--                        <select name="prodCategory">-->
-<!--                            --><?php
-//                            while ($row = $query->fetchArray()) {
-//                                echo '<option>' . $row[0] . '</option>';
-//                            }
-//                            ?>
-<!--                        </select>-->
+                        <input type="text" name="prodCategory" class="form-control" required="required">
+                        <!--                        <select name="prodCategory">-->
+                        <!--                            --><?php
+                        //                            while ($row = $query->fetchArray()) {
+                        //                                echo '<option>' . $row[0] . '</option>';
+                        //                            }
+                        //                            ?>
+                        <!--                        </select>-->
                     </p>
                     <p>Quantity<input type="number" name="prodQuantity" class="form-control" required="required"></p>
                 </div>
@@ -111,15 +111,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stmt->bindValue(':newProdImage', $fileNameNew);
                     $stmt->bindValue(':newProdCode', $prodCode);
                     $stmt->execute();
+                    $_SESSION["flash_message"] = "<div class='bg-success'>Product Added</div>";
                     header("location:index.php");
                 } else {
-                    echo "Your image is too big!";
+                    $_SESSION["flash_message"] = "<div class='bg-danger'>The image file size it too large.</div>";
                 }
             } else {
-                echo "there was an error uploading your image!";
+                $_SESSION["flash_message"] = "<div class='bg-danger'>There was an issue uploading the image.</div>";
             }
         } else {
-            echo "You cannot upload files of this type!";
+            $_SESSION["flash_message"] = "<div class='bg-danger'>This file type is not supported. Only JPGs, PNGs or PDFs are allowed.</div>";
         }
     }
 }

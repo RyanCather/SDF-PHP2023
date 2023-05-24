@@ -57,7 +57,18 @@
         ?>
     </div>
 </nav>
-    <script src="js/bootstrap.bundle.min.js"></script>
+<?php
+if (isset($_SESSION['flash_message'])) {
+    $message = $_SESSION['flash_message'];
+    unset($_SESSION['flash_message']);
+    ?>
+    <div class="position-absolute bottom-0 end-0">
+        <?= $message ?>
+    </div>
+    <?php
+}
+?>
+<script src="js/bootstrap.bundle.min.js"></script>
 
 <?php
 

@@ -45,6 +45,7 @@ if ($_SESSION['AccessLevel'] == 1) {
 
     <?php
 } else {
+    $_SESSION["flash_message"] = "<div class='bg-danger'>You do not have access to this page.</div>";
     header("location:index.php");
 }
 ?>

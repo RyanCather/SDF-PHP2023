@@ -32,10 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sqlStmt->bindParam(':ContactEmail', $userEmail);
     $sqlStmt->bindParam(':Message', $userMessage);
     $sqlStmt->execute();
-
-
-
-
+    $_SESSION["flash_message"] = "<div class='bg-success'>Message Submitted</div>";
 
 
 //    $csvFile = fopen("contact.csv", "a");
