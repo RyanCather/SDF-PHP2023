@@ -1,4 +1,21 @@
+<!--
+Analysis
+This script takes the username and password fields, sanitises the data (check template.php for the explanation)
+Then it loads, or attempts to load the record for that username from the database.
+If the count > 0, that means the username is found in the emailaddress field.
+If the user is found then the password field data is hashed, and checked against what is in the password field.
+If the password is correct, then user details are stored in session variables.
+
+
+Critical Analysis
+Why hash passwords?
+
+What is a session variable?
+
+-->
+
 <?php
+
 /**  @var $conn */
 
 if (isset($_POST['login'])) {
